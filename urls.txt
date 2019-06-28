@@ -1,0 +1,9 @@
+url_list = {
+    'ng': 'https://www.clien.net/service/board/park/13511316',
+    'a_file_mp4': 'https://www.clien.net/service/board/park/13653872',
+    'files_mp4': 'https://www.clien.net/service/board/park/13653656',
+    'files_gif': 'https://www.clien.net/service/board/park/13519036',
+    'files_jpg_mixed': 'https://www.clien.net/service/board/park/13534042'
+    'theqoo': 'https://theqoo.net/1110055038',
+    'theqoo2': 'https://theqoo.net/index.php?mid=square&filter_mode=normal&document_srl=1110148231'
+}
