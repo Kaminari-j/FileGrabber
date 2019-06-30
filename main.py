@@ -1,7 +1,7 @@
 import os
-from FileGrabber import FileGrabber
-from InfoClass import FileInfo
-import converter
+from FileGrabber.FileGrabber import FileGrabber
+#from FileGrabber.modules import FileInfo
+from FileGrabber.modules import converter
 
 if __name__ == '__main__':
     files = FileGrabber.grab_files('https://www.clien.net/service/board/park/13653872')

@@ -2,7 +2,7 @@
 import re
 import urllib.request
 from bs4 import BeautifulSoup, element
-from InfoClass import FileInfo, Websites
+from FileGrabber.modules import FileInfo, Websites
 import json
 
 
@@ -128,7 +128,7 @@ class Instagram(IFileGrabberModule):
     def reformat_url(url):
         try:
             pattern = '^http(s)?://www\.instagram\.com/p/[\w|-]+/'
-            return re.compile(pattern).match(url + '/') + '?__a=1'
+            return re.compile(pattern).match(url + '/')[0] + '?__a=1'
         except TypeError:
             raise TypeError('"' + url + '" Failed to reformat address')
 
