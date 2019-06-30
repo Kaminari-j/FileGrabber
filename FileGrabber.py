@@ -3,6 +3,7 @@ from InfoClass import FileInfo, Websites
 import FileGrabberModule
 
 
+# FileGrabber from GrabPhotoFromCommunities proj
 class FileGrabber:
     @staticmethod
     def grab_files(url):
