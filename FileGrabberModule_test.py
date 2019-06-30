@@ -278,7 +278,8 @@ class test_Instagram(FileGrabberTestMain):
                 r'https://www.instagram.com/p/Br84A_jFDVC/',
                 r'https://www.instagram.com/p/BvieWn7lLKR',
                 r'https://www.instagram.com/p/BvieWn7lLKR//',
-                'https://www.instagram.com/p/BWREXKfj-35/')
+                r'https://www.instagram.com/p/BWREXKfj-35/',
+                r'https://www.instagram.com/p/BWREXKfj-35')
         pattern = '^http(s)?://www\.instagram\.com/p/[\w|-]+/\?__a=1$'
         for url in urls:
             reform = FileGrabberModule.Instagram.reformat_url(url)
