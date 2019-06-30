@@ -108,7 +108,6 @@ class Instagram(IFileGrabberModule):
         if article and isinstance(article, dict):
             files = list()
             base_data = article['graphql']['shortcode_media']
-
             media_type = base_data['__typename']
 
             if media_type == 'GraphVideo':
@@ -117,10 +116,10 @@ class Instagram(IFileGrabberModule):
                 files.append(base_data['display_url'])
             elif media_type == 'GraphSidecar':
                 for item in base_data['edge_sidecar_to_children']['edges']:
-                    sidetype = item['node']['__typename']
-                    if sidetype == 'GraphVideo':
+                    media_type = item['node']['__typename']
+                    if media_type == 'GraphVideo':
                         files.append(item['node']['video_url'])
-                    elif sidetype == 'GraphImage':
+                    elif media_type == 'GraphImage':
                         files.append(item['node']['display_url'])
 
             return files
@@ -129,8 +128,7 @@ class Instagram(IFileGrabberModule):
     def reformat_url(url):
         try:
             pattern = '^http(s)?://www\.instagram\.com/p/[\w|-]+/'
-            result = re.compile(pattern).match(url + '/')
-            return result[0] + '?__a=1'
+            return re.compile(pattern).match(url + '/') + '?__a=1'
         except TypeError:
             raise TypeError('"' + url + '" Failed to reformat address')
 
