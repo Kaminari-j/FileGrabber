@@ -4,9 +4,8 @@ import sys
 import os
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
-from FileGrabber import FileGrabber
-import FileGrabberModule
-from InfoClass import FileInfo, Websites
+from FileGrabber.FileGrabber import FileGrabber
+from FileGrabber.modules import FileGrabberModule, FileInfo, Websites
 
 
 class FileGrabberTestMain(unittest.TestCase):
@@ -22,7 +21,7 @@ class FileGrabberTestMain(unittest.TestCase):
     # Todo: change method name to prepare_bsobjects
     def prepare_testenv(url_list, testenv_dir=None):
         if testenv_dir is None:
-            testenv_dir = r'./testenv/'
+            testenv_dir = r'.test/testenv/'
         if not os.path.exists(testenv_dir):
             os.makedirs(testenv_dir)
 

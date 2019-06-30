@@ -2,9 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df7f3823-1cb1-4454-a539-9ef8de558262" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FileGrabber/modules/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/GrabPhotoFromCommunities.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FileGrabber.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileGrabberModule.py" beforeDir="false" afterPath="$PROJECT_DIR$/FileGrabberModule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileGrabber.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileGrabberModule.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileGrabberModule_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileGrabber_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InfoClass.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InfoClass_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/converter.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/urls.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,6 +27,7 @@
     <session id="-1747946269">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.27" value="1" />
           <entry key="project.opened" value="2" />
@@ -23,116 +35,78 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="11" />
+          <entry key="py" value="52" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="11" />
+          <entry key="Python" value="52" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="1" />
-          <entry key="py" value="1380" />
+          <entry key="py" value="1823" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="1380" />
+          <entry key="Python" value="1823" />
+        </counts>
+      </usages-collector>
+    </session>
+    <session id="1274793554">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Python" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="py" value="39" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Python" value="39" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.43405798">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/InfoClass.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="13" column="65" selection-start-line="13" selection-start-column="65" selection-end-line="13" selection-end-column="65" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/FileGrabberModule.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="473">
-                  <caret line="130" column="66" selection-start-line="130" selection-start-column="66" selection-end-line="130" selection-end-column="66" />
-                  <folding>
-                    <element signature="e#24#33#0" expanded="true" />
-                    <marker date="1561886397446" expanded="true" signature="3239:4537" ph="..." />
-                    <marker date="1561886397446" expanded="true" signature="4243:4249" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/FileGrabber.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="459">
-                  <caret line="27" column="69" selection-start-line="27" selection-start-column="69" selection-end-line="27" selection-end-column="69" />
-                  <folding>
-                    <element signature="e#24#64#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/InfoClass_test.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="13" selection-start-line="13" selection-end-line="13" />
-                  <folding>
-                    <element signature="e#0#15#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/FileGrabberModule_test.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="286">
-                  <caret line="165" lean-forward="true" selection-start-line="165" selection-end-line="165" />
-                  <folding>
-                    <element signature="e#0#15#0" expanded="true" />
-                    <element signature="e#266#1621#0" />
-                    <element signature="e#1668#3563#0" />
-                    <element signature="e#3733#5473#0" />
-                    <element signature="e#5645#8594#0" />
-                    <element signature="e#8814#11354#0" />
-                    <marker date="1561884847217" expanded="true" signature="10768:10774" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/FileGrabber_test.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-                  <folding>
-                    <element signature="e#0#15#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -145,12 +119,23 @@
         <option value="$PROJECT_DIR$/InfoClass.py" />
         <option value="$PROJECT_DIR$/FileGrabber.py" />
         <option value="$PROJECT_DIR$/FileGrabberModule.py" />
+        <option value="$PROJECT_DIR$/modules/FileGrabber/__init__.py" />
+        <option value="$PROJECT_DIR$/modules/__init__.py" />
+        <option value="$PROJECT_DIR$/FileGrabber/modules/__init__.py" />
+        <option value="$PROJECT_DIR$/FileGrabber/FileGrabber.py" />
+        <option value="$PROJECT_DIR$/test/InfoClass_test.py" />
+        <option value="$PROJECT_DIR$/FileGrabber/modules/FileGrabberModule.py" />
+        <option value="$PROJECT_DIR$/FileGrabber/__init__.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/test/FileGrabber_test.py" />
+        <option value="$PROJECT_DIR$/test/FileGrabberModule_test.py" />
+        <option value="$PROJECT_DIR$/FileGrabber/modules/InfoClass.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="219" />
-    <option name="y" value="-23" />
+    <option name="x" value="100" />
+    <option name="y" value="20" />
     <option name="width" value="1400" />
     <option name="height" value="820" />
   </component>
@@ -164,8 +149,24 @@
         <subPane>
           <expand>
             <path>
-              <item name="GrabPhotoFromCommunities" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GrabPhotoFromCommunities" type="462c0819:PsiDirectoryNode" />
+              <item name="FileGrabber" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FileGrabber" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FileGrabber" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FileGrabber" type="462c0819:PsiDirectoryNode" />
+              <item name="FileGrabber" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FileGrabber" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FileGrabber" type="462c0819:PsiDirectoryNode" />
+              <item name="FileGrabber" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FileGrabber" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FileGrabber" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -175,8 +176,13 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="C:/Program Files/Git/git-cmd.exe" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Panasonic\Dropbox\Dev\Github\GrabPhotoFromCommunities\FileGrabber\modules" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -190,20 +196,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for FileGrabberModule_test.test_Instagram.test_collect_files_from_article">
-    <configuration name="FileGrabber" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="GrabPhotoFromCommunities" />
+  <component name="RunManager" selected="Python tests.Unittests in InfoClass_test.py">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="FileGrabber" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FileGrabber.py" />
+      <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -212,22 +218,33 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for FileGrabberModule_test.test_Instagram.test_collect_files_from_article" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="GrabPhotoFromCommunities" />
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <module name="FileGrabber" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test.FileGrabberModule_test.test_Common.test_file_download" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="FileGrabber" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;FileGrabberModule_test.test_Instagram.test_collect_files_from_article&quot;" />
+      <option name="_new_target" value="&quot;test.FileGrabberModule_test.test_Common.test_file_download&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for FileGrabberModule_test.test_Instagram.test_get_article" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="GrabPhotoFromCommunities" />
+    <configuration name="Unittests for test.FileGrabberModule_test.test_Instagram.test_collect_files_from_article" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="FileGrabber" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
@@ -236,52 +253,98 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;FileGrabberModule_test.test_Instagram.test_get_article&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests for FileGrabberModule_test.test_Instagram.test_reformat_url" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="GrabPhotoFromCommunities" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;FileGrabberModule_test.test_Instagram.test_reformat_url&quot;" />
+      <option name="_new_target" value="&quot;test.FileGrabberModule_test.test_Instagram.test_collect_files_from_article&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <configuration name="Unittests in FileGrabberModule_test.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="GrabPhotoFromCommunities" />
+      <module name="FileGrabber" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/FileGrabberModule_test.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/FileGrabberModule_test.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in FileGrabber_test.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="FileGrabber" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/FileGrabber_test.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in InfoClass_test.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="FileGrabber" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/InfoClass_test.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <module name="FileGrabber" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <module name="FileGrabber" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python tests.Unittests for test.FileGrabberModule_test.test_Instagram.test_collect_files_from_article" />
+      <item itemvalue="Python tests.Unittests in FileGrabber_test.py" />
       <item itemvalue="Python tests.Unittests in FileGrabberModule_test.py" />
-      <item itemvalue="Python tests.Unittests for FileGrabberModule_test.test_Instagram.test_reformat_url" />
-      <item itemvalue="Python tests.Unittests for FileGrabberModule_test.test_Instagram.test_get_article" />
-      <item itemvalue="Python tests.Unittests for FileGrabberModule_test.test_Instagram.test_collect_files_from_article" />
-      <item itemvalue="Python.FileGrabber" />
+      <item itemvalue="Python tests.Unittests for test.FileGrabberModule_test.test_Common.test_file_download" />
+      <item itemvalue="Python tests.Unittests in InfoClass_test.py" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests for FileGrabberModule_test.test_Instagram.test_collect_files_from_article" />
-        <item itemvalue="Python.FileGrabber" />
-        <item itemvalue="Python tests.Unittests for FileGrabberModule_test.test_Instagram.test_reformat_url" />
-        <item itemvalue="Python tests.Unittests for FileGrabberModule_test.test_Instagram.test_get_article" />
+        <item itemvalue="Python tests.Unittests in InfoClass_test.py" />
         <item itemvalue="Python tests.Unittests in FileGrabberModule_test.py" />
+        <item itemvalue="Python tests.Unittests in FileGrabber_test.py" />
+        <item itemvalue="Python tests.Unittests for test.FileGrabberModule_test.test_Common.test_file_download" />
+        <item itemvalue="Python tests.Unittests for test.FileGrabberModule_test.test_Instagram.test_collect_files_from_article" />
       </list>
     </recent_temporary>
   </component>
@@ -299,35 +362,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_FileGrabberModule_test_test_Instagram_test_reformat_url - 2019.06.30 at 17h 45m 14s.xml">
-      <configuration name="Unittests for FileGrabberModule_test.test_Instagram.test_reformat_url" configurationId="tests" />
+    <history-entry file="Unittests_for_FileGrabberModule_test_test_Common_test_file_download - 2019.06.30 at 20h 40m 20s.xml">
+      <configuration name="Unittests for FileGrabberModule_test.test_Common.test_file_download" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_FileGrabberModule_test_test_Instagram_test_reformat_url - 2019.06.30 at 17h 45m 49s.xml">
-      <configuration name="Unittests for FileGrabberModule_test.test_Instagram.test_reformat_url" configurationId="tests" />
+    <history-entry file="Unittests_for_FileGrabberModule_test_test_Common_test_file_download - 2019.06.30 at 20h 41m 05s.xml">
+      <configuration name="Unittests for FileGrabberModule_test.test_Common.test_file_download" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_FileGrabberModule_test_test_Instagram_test_reformat_url - 2019.06.30 at 17h 46m 26s.xml">
-      <configuration name="Unittests for FileGrabberModule_test.test_Instagram.test_reformat_url" configurationId="tests" />
+    <history-entry file="Unittests_in_InfoClass_test_py - 2019.06.30 at 20h 41m 14s.xml">
+      <configuration name="Unittests in InfoClass_test.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_FileGrabberModule_test_test_Instagram_test_reformat_url - 2019.06.30 at 17h 49m 37s.xml">
-      <configuration name="Unittests for FileGrabberModule_test.test_Instagram.test_reformat_url" configurationId="tests" />
+    <history-entry file="Unittests_in_FileGrabberModule_test_py - 2019.06.30 at 20h 41m 22s.xml">
+      <configuration name="Unittests in FileGrabberModule_test.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_FileGrabberModule_test_test_Instagram_test_reformat_url - 2019.06.30 at 17h 49m 40s.xml">
-      <configuration name="Unittests for FileGrabberModule_test.test_Instagram.test_reformat_url" configurationId="tests" />
+    <history-entry file="Unittests_in_FileGrabberModule_test_py - 2019.06.30 at 20h 42m 59s.xml">
+      <configuration name="Unittests in FileGrabberModule_test.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_FileGrabberModule_test_test_Instagram_test_reformat_url - 2019.06.30 at 17h 52m 17s.xml">
-      <configuration name="Unittests for FileGrabberModule_test.test_Instagram.test_reformat_url" configurationId="tests" />
+    <history-entry file="Unittests_in_FileGrabberModule_test_py - 2019.06.30 at 20h 46m 26s.xml">
+      <configuration name="Unittests in FileGrabberModule_test.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_FileGrabberModule_test_test_Instagram_test_reformat_url - 2019.06.30 at 17h 53m 13s.xml">
-      <configuration name="Unittests for FileGrabberModule_test.test_Instagram.test_reformat_url" configurationId="tests" />
+    <history-entry file="Unittests_in_FileGrabberModule_test_py - 2019.06.30 at 20h 48m 26s.xml">
+      <configuration name="Unittests in FileGrabberModule_test.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_FileGrabberModule_test_test_Instagram_test_reformat_url - 2019.06.30 at 17h 54m 11s.xml">
-      <configuration name="Unittests for FileGrabberModule_test.test_Instagram.test_reformat_url" configurationId="tests" />
+    <history-entry file="Unittests_in_FileGrabber_test_py - 2019.06.30 at 20h 49m 15s.xml">
+      <configuration name="Unittests in FileGrabber_test.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_FileGrabberModule_test_test_Instagram_test_reformat_url - 2019.06.30 at 17h 54m 42s.xml">
-      <configuration name="Unittests for FileGrabberModule_test.test_Instagram.test_reformat_url" configurationId="tests" />
+    <history-entry file="Unittests_in_FileGrabberModule_test_py - 2019.06.30 at 20h 49m 20s.xml">
+      <configuration name="Unittests in FileGrabberModule_test.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_FileGrabberModule_test_test_Instagram_test_collect_files_from_article - 2019.06.30 at 18h 09m 18s.xml">
-      <configuration name="Unittests for FileGrabberModule_test.test_Instagram.test_collect_files_from_article" configurationId="tests" />
+    <history-entry file="Unittests_in_InfoClass_test_py - 2019.06.30 at 20h 49m 22s.xml">
+      <configuration name="Unittests in InfoClass_test.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -339,13 +402,13 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32884097" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32884097" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.31536388" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32884097" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.30592993" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32884097" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32884097" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -368,6 +431,13 @@
     <watches-manager>
       <configuration name="tests">
         <watch expression="base_data" language="Python" />
+        <watch expression="re.compile(pattern).match(url + '/')[0] + '?__a=1'" language="Python" />
+        <watch expression="fi.FILE_URL" />
+        <watch expression="&quot;{0}&quot;.format(fi.PATH)" />
+        <watch expression="fi.PATH" />
+        <watch expression="FileGrabberModule.Common.download(fi)" />
+        <watch expression="urllib.request.urlretrieve(fi.FILE_URL, &quot;{0}&quot;.format(fi.PATH))" />
+        <watch expression="fi.FILE_URL" />
       </configuration>
     </watches-manager>
   </component>
@@ -426,43 +496,9 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/InfoClass_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python36_64/Lib/unittest/case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="605" selection-start-line="605" selection-end-line="605" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/converter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FileGrabber_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/InfoClass_test.py" />
+    <entry file="file://$PROJECT_DIR$/converter.py" />
+    <entry file="file://$PROJECT_DIR$/FileGrabber_test.py" />
     <entry file="file://C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python36_64/Lib/unittest/suite.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
@@ -477,47 +513,110 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/InfoClass.py">
+    <entry file="file://$PROJECT_DIR$/FileGrabber.py" />
+    <entry file="file://$PROJECT_DIR$/FileGrabberModule_test.py" />
+    <entry file="file://$PROJECT_DIR$/InfoClass.py" />
+    <entry file="file://$PROJECT_DIR$/FileGrabberModule.py" />
+    <entry file="file://$PROJECT_DIR$/modules/FileGrabber/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/modules/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/modules/FileGrabber.py" />
+    <entry file="file://$PROJECT_DIR$/FileGrabber/modules/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" column="65" selection-start-line="13" selection-start-column="65" selection-end-line="13" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FileGrabber.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="69" selection-start-line="27" selection-start-column="69" selection-end-line="27" selection-end-column="69" />
+        <state relative-caret-position="17">
+          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
           <folding>
-            <element signature="e#24#64#0" expanded="true" />
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FileGrabberModule_test.py">
+    <entry file="file://$PROJECT_DIR$/test/InfoClass_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="165" lean-forward="true" selection-start-line="165" selection-end-line="165" />
+        <state relative-caret-position="85">
+          <caret line="5" column="37" lean-forward="true" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <element signature="e#266#1621#0" />
-            <element signature="e#1668#3563#0" />
-            <element signature="e#3733#5473#0" />
-            <element signature="e#5645#8594#0" />
-            <element signature="e#8814#11354#0" />
-            <marker date="1561884847217" expanded="true" signature="10768:10774" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FileGrabberModule.py">
+    <entry file="file://$PROJECT_DIR$/FileGrabber/modules/converter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="130" column="66" selection-start-line="130" selection-start-column="66" selection-end-line="130" selection-end-column="66" />
+        <state relative-caret-position="83">
+          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FileGrabber/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python36_64/Lib/unittest/case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="604" selection-start-line="604" selection-end-line="604" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/FileGrabber_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FileGrabber/FileGrabber.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FileGrabber/modules/InfoClass.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/FileGrabberModule_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1411">
+          <caret line="83" column="51" lean-forward="true" selection-start-line="83" selection-start-column="51" selection-end-line="83" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FileGrabber/modules/FileGrabberModule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
           <folding>
             <element signature="e#24#33#0" expanded="true" />
-            <marker date="1561886397446" expanded="true" signature="3239:4537" ph="..." />
-            <marker date="1561886397446" expanded="true" signature="4243:4249" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-from InfoClass import FileInfo, Websites
-import FileGrabberModule
+from FileGrabber.modules import FileGrabberModule, FileInfo, Websites
 
 
-# FileGrabber from GrabPhotoFromCommunities proj
+# FileGrabber from FileGrabber proj
 class FileGrabber:
     @staticmethod
     def grab_files(url):

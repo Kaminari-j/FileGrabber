@@ -2,7 +2,7 @@
 import re
 import urllib.request
 from bs4 import BeautifulSoup, element
-from InfoClass import FileInfo, Websites
+from FileGrabber.modules import FileInfo, Websites
 import json
 
 
