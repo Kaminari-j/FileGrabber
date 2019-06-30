@@ -9,7 +9,7 @@ class FileInfo:
     def __init__(self, file_url, title=None):
         if file_url:
             self.FILE_URL = file_url
-            self.FILE_NAME = file_url.split('/')[-1]
+            self.FILE_NAME = file_url.split('?')[0].split('/')[-1]
             self.FILE_NAME_EN = self.FILE_NAME.split('.')[0]
             self.FILE_NAME_KO = title if title else self.FILE_NAME_EN
             self.EXT = self.FILE_NAME.split('.')[1]
@@ -28,6 +28,7 @@ class FileInfo:
 class Websites(object):
     CLIEN = "clien"
     THEQOO = "theqoo"
+    INSTAGRAM = "instagram"
 
     @staticmethod
     def get_websites_dict():

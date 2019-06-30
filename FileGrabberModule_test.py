@@ -9,20 +9,6 @@ import FileGrabberModule
 from InfoClass import FileInfo, Websites
 
 
-class CasesClien(object):
-    NG = 'ng'
-    MP4_FILE = 'mp4_file'
-    MP4_FILES = 'mp4_files'
-    GIF_FILES = 'gif_files'
-
-
-class CasesTheqoo(object):
-    NG = 'ng'
-    GFY_FILE = 'gfy_file'
-    GFY_FILES = 'gfy_files'
-    GIF_FILES = 'gif_files'
-
-
 class FileGrabberTestMain(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -120,6 +106,13 @@ class test_Common(FileGrabberTestMain):
                 self.assertEqual(result, Websites.THEQOO)
 
 
+class CasesClien(object):
+    NG = 'ng'
+    MP4_FILE = 'mp4_file'
+    MP4_FILES = 'mp4_files'
+    GIF_FILES = 'gif_files'
+
+
 class test_Clien(FileGrabberTestMain):
     @classmethod
     def setUpClass(cls):
@@ -162,6 +155,13 @@ class test_Clien(FileGrabberTestMain):
                 pattern = 'http(s)?://.*\.(gif|mp4)'
                 for file in result:
                     self.assertIsNotNone(re.compile(pattern).match(file))
+
+
+class CasesTheqoo(object):
+    NG = 'ng'
+    GFY_FILE = 'gfy_file'
+    GFY_FILES = 'gfy_files'
+    GIF_FILES = 'gif_files'
 
 
 class test_Theqoo(FileGrabberTestMain):
@@ -234,6 +234,79 @@ class test_Theqoo(FileGrabberTestMain):
         for case in cases:
             result = FileGrabberModule.Theqoo.convert_gfycat(case['asis'])
             self.assertEqual(case['tobe'], result)
+
+
+class CasesInstagram(object):
+    NG = 'ng'
+    A_PHOTO = 'a_photo'
+    PHOTOS = 'photos'
+    VIDEO = 'video'
+    MIXED = 'mixed'
+
+
+# Todo : way of bs_obj's refreshment.
+class test_Instagram(FileGrabberTestMain):
+    @classmethod
+    def setUpClass(cls):
+        cls.filegrabber = FileGrabber()
+        cls.module = FileGrabberModule.Instagram()
+        cls.url_list = {
+            'ng': 'https://www.instagram.com/kyokofukada_official/',
+            'a_photo': 'https://www.instagram.com/p/BWJUqO6jXpy/?utm_source=ig_web_button_share_sheet',
+            'photos': 'https://www.instagram.com/p/Br84A_jFDVC/',
+            'video': 'https://www.instagram.com/p/BWREXKfj-35/',
+            'mixed': 'https://www.instagram.com/p/BvieWn7lLKR/'
+        }
+        cls.url_list_json = dict()
+        for case, url in cls.url_list.items():
+            if case != 'ng':
+                cls.url_list_json[case] = FileGrabberModule.Instagram.reformat_url(url)
+        cls.bs_list = cls.prepare_testenv(cls.url_list_json, r'./testenv/instagram/')
+        # create articles
+        cls.articles = dict()
+        try:
+            for case, bsobj in cls.bs_list.items():
+                cls.articles[case] = cls.module.get_article(bsobj)
+        except:
+            import traceback
+            traceback.print_exc()
+            cls.articles = None
+
+    def test_reformat_url(self):
+        # OK
+        urls = (r'https://www.instagram.com/p/BWJUqO6jXpy/?utm_source=ig_web_button_share_sheet',
+                r'https://www.instagram.com/p/Br84A_jFDVC/',
+                r'https://www.instagram.com/p/BvieWn7lLKR',
+                r'https://www.instagram.com/p/BvieWn7lLKR//',
+                'https://www.instagram.com/p/BWREXKfj-35/')
+        pattern = '^http(s)?://www\.instagram\.com/p/[\w|-]+/\?__a=1$'
+        for url in urls:
+            reform = FileGrabberModule.Instagram.reformat_url(url)
+            result = re.compile(pattern).match(reform)
+            self.assertIsNotNone(result)
+        # NG
+        url = r'https://www.instagram.com/kyokofukada_official/'
+        try:
+            FileGrabberModule.Instagram.reformat_url(url)
+        except TypeError:
+            pass
+
+    def test_get_article(self):
+        self.assertIsNone(self.module.get_article(None))
+        self.assertIsNone(self.module.get_article('test'))
+        self.assertIsNotNone(self.module.get_article(self.bs_list[CasesInstagram.A_PHOTO]))
+
+    def test_collect_files_from_article(self):
+        for case, article in self.articles.items():
+            result = self.module.collect_files_from_article(article)
+            # Case: NG
+            if case == CasesInstagram.NG:
+                self.assertIsNone(result)
+            # Case: OK
+            else:
+                self.assertIsNotNone(result)
+                self.assertIsInstance(result, list)
+                self.assertIsInstance(result[0], str)
 
 
 if __name__ == '__main__':

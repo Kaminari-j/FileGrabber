@@ -3,6 +3,7 @@ import re
 import urllib.request
 from bs4 import BeautifulSoup, element
 from InfoClass import FileInfo, Websites
+import json
 
 
 class Common:
@@ -74,6 +75,7 @@ class Theqoo(IFileGrabberModule):
         if len(files) > 0:
             return [file for file in files if file is not None]
 
+    # Todo : refactoring
     @staticmethod
     def reformat_url(url):
         reformatted_url = None
@@ -95,6 +97,42 @@ class Theqoo(IFileGrabberModule):
     def convert_gfycat(gfycat_url):
         gfyname = gfycat_url.split('/')[-1].split('.')[0]
         return 'https://thumbs.gfycat.com/' + gfyname + '-size_restricted.gif'
+
+
+class Instagram(IFileGrabberModule):
+    def get_article(self, bs_obj):
+        if isinstance(bs_obj, BeautifulSoup):
+            return json.loads(str(bs_obj))
+
+    def collect_files_from_article(self, article):
+        if article and isinstance(article, dict):
+            files = list()
+            base_data = article['graphql']['shortcode_media']
+
+            media_type = base_data['__typename']
+
+            if media_type == 'GraphVideo':
+                files.append(base_data['video_url'])
+            elif media_type == 'GraphImage':
+                files.append(base_data['display_url'])
+            elif media_type == 'GraphSidecar':
+                for item in base_data['edge_sidecar_to_children']['edges']:
+                    sidetype = item['node']['__typename']
+                    if sidetype == 'GraphVideo':
+                        files.append(item['node']['video_url'])
+                    elif sidetype == 'GraphImage':
+                        files.append(item['node']['display_url'])
+
+            return files
+
+    @staticmethod
+    def reformat_url(url):
+        try:
+            pattern = '^http(s)?://www\.instagram\.com/p/[\w|-]+/'
+            result = re.compile(pattern).match(url + '/')
+            return result[0] + '?__a=1'
+        except TypeError:
+            raise TypeError('"' + url + '" Failed to reformat address')
 
 
 if __name__ == '__main__':
