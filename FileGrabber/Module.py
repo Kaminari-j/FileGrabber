@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import re
+import json
 import urllib.request
 from bs4 import BeautifulSoup, element
-from FileGrabber.modules import FileInfo, Websites
-import json
+from .InfoClass import FileInfo, Websites
 
 
 class Common:

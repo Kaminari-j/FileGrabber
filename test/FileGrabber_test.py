@@ -1,7 +1,7 @@
 import unittest
 from test.FileGrabberModule_test import FileGrabberTestMain
-from FileGrabber.FileGrabber import FileGrabber
-from FileGrabber.modules import Websites
+from FileGrabber import FileGrabber
+from FileGrabber.InfoClass import Websites
 
 
 # Todo: belows
@@ -21,10 +21,10 @@ class _FileGrabberTest(FileGrabberTestMain):
         for web in webs:
             result = FileGrabber.create_module(web)
             if web == Websites.CLIEN:
-                from FileGrabber.modules.FileGrabberModule import Clien
+                from FileGrabber.Module import Clien
                 self.assertIsInstance(result, Clien)
             elif web == Websites.THEQOO:
-                from FileGrabber.modules.FileGrabberModule import Theqoo
+                from FileGrabber.Module import Theqoo
                 self.assertIsInstance(result, Theqoo)
 
 

@@ -1,5 +1,5 @@
 import unittest
-from FileGrabber.modules import InfoClass
+from FileGrabber import InfoClass
 
 
 class TestWebSites(unittest.TestCase):
