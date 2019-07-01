@@ -1,1 +1,9 @@
-# GrabPhotoFromCommunities
+# FileGrabber
+## : 커뮤니티 사이트 및 SNS에 게시된 사진/동영상 추출
+
+- 현재까지 구현된 서비스/웹사이트
+    - 클리앙
+    - 더쿠
+    - 인스타그램
+
+사용 방법은 example 을 참고.
