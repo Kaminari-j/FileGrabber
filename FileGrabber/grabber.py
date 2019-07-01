@@ -33,7 +33,6 @@ class FileGrabber:
                 i = 1
                 for file_url in files_on_url:
                     fi = FileInfo(file_url, title + '_' + str(i))
-                    Module.Common.download(fi)
                     files.append(fi)
                     i += 1
                 return files
@@ -48,6 +47,10 @@ class FileGrabber:
             return Module.Instagram()
         else:
             raise ValueError
+
+    @staticmethod
+    def download_file(fi: FileInfo):
+        Module.Common.download(fi)
 
 
 if __name__ == '__main__':
