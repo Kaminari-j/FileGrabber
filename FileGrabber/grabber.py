@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from FileGrabber.modules import FileGrabberModule, FileInfo, Websites
+from FileGrabber.InfoClass import Websites, FileInfo
+from FileGrabber import Module
 
 
 # FileGrabber from FileGrabber proj
@@ -7,15 +8,15 @@ class FileGrabber:
     @staticmethod
     def grab_files(url):
         # Check Which website it is
-        website = FileGrabberModule.Common.verify_website(url)
+        website = Module.Common.verify_website(url)
         # some url should be reformatted
         if website == Websites.THEQOO:
-            url = FileGrabberModule.Theqoo.reformat_url(url)
+            url = Module.Theqoo.reformat_url(url)
         elif website == Websites.INSTAGRAM:
-            url = FileGrabberModule.Instagram.reformat_url(url)
+            url = Module.Instagram.reformat_url(url)
         
         # Get bs_obj
-        bs_obj = FileGrabberModule.Common.getBsobj(url)
+        bs_obj = Module.Common.getBsobj(url)
 
         if bs_obj:
             # verify website
@@ -32,7 +33,7 @@ class FileGrabber:
                 i = 1
                 for file_url in files_on_url:
                     fi = FileInfo(file_url, title + '_' + str(i))
-                    FileGrabberModule.Common.download(fi)
+                    Module.Common.download(fi)
                     files.append(fi)
                     i += 1
                 return files
@@ -40,17 +41,18 @@ class FileGrabber:
     @staticmethod
     def create_module(website: Websites):
         if website == Websites.THEQOO:
-            return FileGrabberModule.Theqoo()
+            return Module.Theqoo()
         elif website == Websites.CLIEN:
-            return FileGrabberModule.Clien()
+            return Module.Clien()
         elif website == Websites.INSTAGRAM:
-            return FileGrabberModule.Instagram()
+            return Module.Instagram()
         else:
             raise ValueError
 
 
 if __name__ == '__main__':
-    files = FileGrabber.grab_files('https://www.instagram.com/p/BvieWn7lLKR')
+    testurl = r'https://www.clien.net/service/board/park/13666299?od=T31&po=0&category=&groupCd='
+    files = FileGrabber.grab_files(testurl)
     for f in files:
         f.print_file()
         print()

@@ -4,8 +4,9 @@ import sys
 import os
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
-from FileGrabber.FileGrabber import FileGrabber
-from FileGrabber.modules import FileGrabberModule, FileInfo, Websites
+from FileGrabber import Module
+from FileGrabber.grabber import FileGrabber
+from FileGrabber.InfoClass import Websites, FileInfo
 
 
 class FileGrabberTestMain(unittest.TestCase):
@@ -61,7 +62,7 @@ class test_Common(FileGrabberTestMain):
     # @unittest.skip("bs obj取得に時間がかかるため、普段はスキップする")
     def test_getBsobj(self):
         url = r'https://www.clien.net/service/board/park/13514749'
-        result = FileGrabberModule.Common.getBsobj(url)
+        result = Module.Common.getBsobj(url)
         # 1 Return should be not none
         self.assertIsNotNone(result)
         # 2 return should be type of bs
@@ -70,7 +71,7 @@ class test_Common(FileGrabberTestMain):
         # 3 if url is invalid method should throw value error
         url = r'about:blank'
         try:
-            FileGrabberModule.Common.getBsobj(url)
+            Module.Common.getBsobj(url)
             self.assertTrue(False)
         except ValueError:
             self.assertTrue(True)
@@ -81,23 +82,23 @@ class test_Common(FileGrabberTestMain):
         fi = FileInfo(url, None)
         # 1 when invalid file
         try:
-            FileGrabberModule.Common.download(None)
+            Module.Common.download(None)
             self.assertTrue(False)
         except AttributeError:
             self.assertTrue(True)
 
         # 2 check result
-        dl_rslt = FileGrabberModule.Common.download(fi)
+        dl_rslt = Module.Common.download(fi)
         self.assertEqual(fi.PATH, dl_rslt[0])
 
     def test_verify_website(self):
         with self.assertRaises(ValueError):
-            FileGrabberModule.Common.verify_website('https://www.naver.com')
+            Module.Common.verify_website('https://www.naver.com')
 
         urls = {'clien': r'https://www.clien.net/service/board/park',
                 'theqoo': r'https://theqoo.net/index.php?mid=square&filter_mode=normal&page=2&document_srl=1110055038'}
         for site, url in urls.items():
-            result = FileGrabberModule.Common.verify_website(url)
+            result = Module.Common.verify_website(url)
             self.assertIsNotNone(result)
             if site == Websites.CLIEN:
                 self.assertEqual(result, Websites.CLIEN)
@@ -116,7 +117,7 @@ class test_Clien(FileGrabberTestMain):
     @classmethod
     def setUpClass(cls):
         cls.filegrabber = FileGrabber()
-        cls.module = FileGrabberModule.Clien()
+        cls.module = Module.Clien()
         cls.url_list = {
             CasesClien.NG: 'https://www.clien.net/service/board/park/13511316',
             CasesClien.MP4_FILE: 'https://www.clien.net/service/board/park/13514749',
@@ -167,7 +168,7 @@ class test_Theqoo(FileGrabberTestMain):
     @classmethod
     def setUpClass(cls):
         cls.filegrabber = FileGrabber()
-        cls.module = FileGrabberModule.Theqoo()
+        cls.module = Module.Theqoo()
         cls.url_list = {
             'ng': 'https://theqoo.net/1111082289',
             'gfy_file': 'https://theqoo.net/1111082407',
@@ -215,13 +216,13 @@ class test_Theqoo(FileGrabberTestMain):
                 r'https://theqoo.net/1110055038')
         pattern = '^http(s)?://theqoo\.net/[0-9]+$'
         for url in urls:
-            reform = FileGrabberModule.Theqoo.reformat_url(url)
+            reform = Module.Theqoo.reformat_url(url)
             result = re.compile(pattern).match(reform)
             self.assertIsNotNone(result)
         # NG
         url = r'https://theqoo.net/index.php'
         try:
-            FileGrabberModule.Theqoo.reformat_url(url)
+            Module.Theqoo.reformat_url(url)
         except ValueError:
             pass
 
@@ -231,7 +232,7 @@ class test_Theqoo(FileGrabberTestMain):
                  {'asis': r'https://giant.gfycat.com/PinkTightCrustacean.webm',
                   'tobe': r'https://thumbs.gfycat.com/PinkTightCrustacean-size_restricted.gif'})
         for case in cases:
-            result = FileGrabberModule.Theqoo.convert_gfycat(case['asis'])
+            result = Module.Theqoo.convert_gfycat(case['asis'])
             self.assertEqual(case['tobe'], result)
 
 
@@ -248,7 +249,7 @@ class test_Instagram(FileGrabberTestMain):
     @classmethod
     def setUpClass(cls):
         cls.filegrabber = FileGrabber()
-        cls.module = FileGrabberModule.Instagram()
+        cls.module = Module.Instagram()
         cls.url_list = {
             'ng': 'https://www.instagram.com/kyokofukada_official/',
             'a_photo': 'https://www.instagram.com/p/BWJUqO6jXpy/?utm_source=ig_web_button_share_sheet',
@@ -259,7 +260,7 @@ class test_Instagram(FileGrabberTestMain):
         cls.url_list_json = dict()
         for case, url in cls.url_list.items():
             if case != 'ng':
-                cls.url_list_json[case] = FileGrabberModule.Instagram.reformat_url(url)
+                cls.url_list_json[case] = Module.Instagram.reformat_url(url)
         cls.bs_list = cls.prepare_testenv(cls.url_list_json, r'./testenv/instagram/')
         # create articles
         cls.articles = dict()
@@ -281,13 +282,13 @@ class test_Instagram(FileGrabberTestMain):
                 r'https://www.instagram.com/p/BWREXKfj-35')
         pattern = '^http(s)?://www\.instagram\.com/p/[\w|-]+/\?__a=1$'
         for url in urls:
-            reform = FileGrabberModule.Instagram.reformat_url(url)
+            reform = Module.Instagram.reformat_url(url)
             result = re.compile(pattern).match(reform)
             self.assertIsNotNone(result)
         # NG
         url = r'https://www.instagram.com/kyokofukada_official/'
         try:
-            FileGrabberModule.Instagram.reformat_url(url)
+            Module.Instagram.reformat_url(url)
         except TypeError:
             pass
 
