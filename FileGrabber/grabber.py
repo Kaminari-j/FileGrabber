@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from FileGrabber.InfoClass import Websites, FileInfo
+from FileGrabber.InfoClass import Webservices, FileInfo
 from FileGrabber import Module
 
 
@@ -10,9 +10,9 @@ class FileGrabber:
         # Check Which website it is
         website = Module.Common.verify_website(url)
         # some url should be reformatted
-        if website == Websites.THEQOO:
+        if website == Webservices.THEQOO:
             url = Module.Theqoo.reformat_url(url)
-        elif website == Websites.INSTAGRAM:
+        elif website == Webservices.INSTAGRAM:
             url = Module.Instagram.reformat_url(url)
         
         # Get bs_obj
@@ -38,12 +38,12 @@ class FileGrabber:
                 return files
 
     @staticmethod
-    def create_module(website: Websites):
-        if website == Websites.THEQOO:
+    def create_module(website: Webservices):
+        if website == Webservices.THEQOO:
             return Module.Theqoo()
-        elif website == Websites.CLIEN:
+        elif website == Webservices.CLIEN:
             return Module.Clien()
-        elif website == Websites.INSTAGRAM:
+        elif website == Webservices.INSTAGRAM:
             return Module.Instagram()
         else:
             raise ValueError

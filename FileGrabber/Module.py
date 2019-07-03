@@ -3,7 +3,7 @@ import re
 import json
 import urllib.request
 from bs4 import BeautifulSoup, element
-from .InfoClass import FileInfo, Websites
+from .InfoClass import FileInfo, Webservices
 
 
 class Common:
@@ -23,7 +23,7 @@ class Common:
     @staticmethod
     def verify_website(url):
         url = url.lower()
-        for key, domain in Websites.get_websites_dict().items():
+        for key, domain in Webservices.get_webservices_dict().items():
             pattern = 'http(s)?://.*' + domain + '.*'
             if re.compile(pattern).match(url):
                 return domain

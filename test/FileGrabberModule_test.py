@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from FileGrabber import Module
 from FileGrabber.grabber import FileGrabber
-from FileGrabber.InfoClass import Websites, FileInfo
+from FileGrabber.InfoClass import Webservices, FileInfo
 
 
 class FileGrabberTestMain(unittest.TestCase):
@@ -100,10 +100,10 @@ class test_Common(FileGrabberTestMain):
         for site, url in urls.items():
             result = Module.Common.verify_website(url)
             self.assertIsNotNone(result)
-            if site == Websites.CLIEN:
-                self.assertEqual(result, Websites.CLIEN)
-            elif site == Websites.THEQOO:
-                self.assertEqual(result, Websites.THEQOO)
+            if site == Webservices.CLIEN:
+                self.assertEqual(result, Webservices.CLIEN)
+            elif site == Webservices.THEQOO:
+                self.assertEqual(result, Webservices.THEQOO)
 
 
 class CasesClien(object):

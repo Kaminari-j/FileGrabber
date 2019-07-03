@@ -15,5 +15,5 @@ def main(url):
 
 
 if __name__ == '__main__':
-    url = 'https://www.clien.net/service/board/park/13653872?po=6&sk=title&sv=gif&groupCd=&pt=0'
+    url = 'https://www.clien.net/service/board/park/13670441?od=T31&po=0&category=&groupCd='
     main(url)

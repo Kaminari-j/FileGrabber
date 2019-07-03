@@ -1,7 +1,7 @@
 import unittest
 from test.FileGrabberModule_test import FileGrabberTestMain
 from FileGrabber import FileGrabber
-from FileGrabber.InfoClass import Websites
+from FileGrabber.InfoClass import Webservices
 
 
 # Todo: belows
@@ -17,13 +17,13 @@ class _FileGrabberTest(FileGrabberTestMain):
         with self.assertRaises(ValueError):
             FileGrabber.create_module(None)
                 
-        webs = (Websites.CLIEN, Websites.THEQOO)
+        webs = (Webservices.CLIEN, Webservices.THEQOO)
         for web in webs:
             result = FileGrabber.create_module(web)
-            if web == Websites.CLIEN:
+            if web == Webservices.CLIEN:
                 from FileGrabber.Module import Clien
                 self.assertIsInstance(result, Clien)
-            elif web == Websites.THEQOO:
+            elif web == Webservices.THEQOO:
                 from FileGrabber.Module import Theqoo
                 self.assertIsInstance(result, Theqoo)
 
