@@ -5,11 +5,12 @@ from FileGrabber.InfoClass import Webservices
 
 
 # Todo: belows
-class _FileGrabberTest(FileGrabberTestMain):
+class FileGrabberTest(FileGrabberTestMain):
     @classmethod
     def setUpClass(cls):
         pass
 
+    @unittest.skip
     def test_grab_files(self):
         self.fail()
 
