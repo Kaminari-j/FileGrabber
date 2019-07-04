@@ -75,23 +75,18 @@ class Theqoo(IFileGrabberModule):
         if len(files) > 0:
             return [file for file in files if file is not None]
 
-    # Todo : refactoring
     @staticmethod
     def reformat_url(url):
         reformatted_url = None
-        pattern = '^http(s)?://theqoo\.net/[0-9]+$'
-        if len(url.split('?')) == 1 and re.compile(pattern).search(url):
-            reformatted_url = url
-        else:
-            for params in url.split('&'):
-                pattern = 'document_srl'
-                if re.compile(pattern).search(params):
-                    reformatted_url = r'https://theqoo.net/' + params.split('=')[1]
+        # Check if valid url
+        url_pattern = 'http(s)?://theqoo\.net/.*[0-9]{8,15}'
+        if re.compile(url_pattern).search(url):
+            # Find doc_srl (10digits number)
+            doc_srl_pattern = '[0-9]{8,15}'
+            search_doc_srl = re.compile(doc_srl_pattern).search(url)
+            reformatted_url = r'https://theqoo.net/' + search_doc_srl.group()
 
-        if reformatted_url:
-            return reformatted_url
-        else:
-            raise ValueError
+        return reformatted_url if reformatted_url is not None else ValueError('URL is Invalid: ' + url)
 
     @staticmethod
     def convert_gfycat(gfycat_url):
@@ -106,10 +101,10 @@ class Instagram(IFileGrabberModule):
 
     def collect_files_from_article(self, article):
         if article and isinstance(article, dict):
-            files = list()
             base_data = article['graphql']['shortcode_media']
             media_type = base_data['__typename']
 
+            files = list()
             if media_type == 'GraphVideo':
                 files.append(base_data['video_url'])
             elif media_type == 'GraphImage':

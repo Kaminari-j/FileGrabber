@@ -213,7 +213,8 @@ class test_Theqoo(FileGrabberTestMain):
         # OK
         urls = (r'https://theqoo.net/index.php?mid=square&filter_mode=normal&page=2&document_srl=1110055038',
                 r'https://theqoo.net/index.php?mid=square&filter_mode=normal&page=2&document_srl=1110055039',
-                r'https://theqoo.net/1110055038')
+                r'https://theqoo.net/1110055038',
+                r'https://theqoo.net/1110055038?abcde')
         pattern = '^http(s)?://theqoo\.net/[0-9]+$'
         for url in urls:
             reform = Module.Theqoo.reformat_url(url)
