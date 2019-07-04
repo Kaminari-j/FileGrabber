@@ -215,10 +215,9 @@ class test_Theqoo(FileGrabberTestMain):
                 r'https://theqoo.net/index.php?mid=square&filter_mode=normal&page=2&document_srl=1110055039',
                 r'https://theqoo.net/1110055038',
                 r'https://theqoo.net/1110055038?abcde')
-        pattern = '^http(s)?://theqoo\.net/[0-9]+$'
         for url in urls:
             reform = Module.Theqoo.reformat_url(url)
-            result = re.compile(pattern).match(reform)
+            result = re.compile('^http(s)?://theqoo\.net/[\d]{8,15}$').match(reform)
             self.assertIsNotNone(result)
         # NG
         url = r'https://theqoo.net/index.php'

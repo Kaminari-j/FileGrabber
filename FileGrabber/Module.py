@@ -79,9 +79,9 @@ class Theqoo(IFileGrabberModule):
     def reformat_url(url):
         reformatted_url = None
         # Check if valid url
-        if re.compile('http(s)?://theqoo\.net/.*[0-9]{8,15}').search(url):
+        if re.compile('http(s)?://theqoo\.net/.*[\d]{8,15}').search(url):
             # Find doc_srl (10digits number)
-            search_doc_srl = re.compile('[0-9]{8,15}').search(url)
+            search_doc_srl = re.compile('[\d]{8,15}').search(url)
             reformatted_url = r'https://theqoo.net/' + search_doc_srl.group()
 
         return reformatted_url if reformatted_url is not None else ValueError('URL is Invalid: ' + url)
