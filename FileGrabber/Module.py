@@ -88,8 +88,9 @@ class Theqoo(IFileGrabberModule):
 
     @staticmethod
     def convert_gfycat(gfycat_url):
-        gfyname = gfycat_url.split('/')[-1].split('.')[0]
-        return 'https://thumbs.gfycat.com/' + gfyname + '-size_restricted.gif'
+        return 'https://thumbs.gfycat.com/' + \
+                gfycat_url.split('/')[-1].split('.')[0] + \
+                '-size_restricted.gif'
 
 
 class Instagram(IFileGrabberModule):

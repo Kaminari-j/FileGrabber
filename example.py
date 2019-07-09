@@ -10,8 +10,9 @@ def main(url):
         f.print_file()
         if not os.path.exists(f.PATH):
             FileGrabber.download_file(f)
-        converter.convertFile(f.PATH, converter.TargetFormat.GIF)
-        os.remove(f.PATH)
+        if f.EXT == 'mp4':
+            converter.convertFile(f.PATH, converter.TargetFormat.GIF)
+            os.remove(f.PATH)
 
 
 if __name__ == '__main__':
