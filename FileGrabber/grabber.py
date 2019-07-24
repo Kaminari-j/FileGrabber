@@ -30,11 +30,9 @@ class FileGrabber:
             files_on_url = module.collect_files_from_article(article)
             if files_on_url:
                 files = list()
-                i = 1
-                for file_url in files_on_url:
-                    fi = FileInfo(file_url, title + '_' + str(i))
+                for i, file_url in enumerate(files_on_url):
+                    fi = FileInfo(file_url, title + '_' + str(i+1))
                     files.append(fi)
-                    i += 1
                 return files
 
     @staticmethod
