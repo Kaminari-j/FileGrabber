@@ -1,4 +1,4 @@
-from .grabber import FileGrabber
-from . import Module
+from . import main
+from .FileGrabber import *
 from . import converter
-from .InfoClass import Webservices, FileInfo
+from .InfoClass import FileInfo, Webservices

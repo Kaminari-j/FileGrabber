@@ -1,5 +1,5 @@
 import os
-from FileGrabber.grabber import FileGrabber
+from FileGrabber.main import FileGrabber
 from FileGrabber import converter
 
 

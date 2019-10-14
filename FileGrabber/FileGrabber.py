@@ -3,12 +3,41 @@ import re
 import json
 import urllib.request
 from bs4 import BeautifulSoup, element
-from .InfoClass import FileInfo, Webservices
+from InfoClass import FileInfo, Webservices
+from abc import *
 
 
-class Common:
+class IFileGrabberModule(metaclass=ABCMeta):
+    url = None
+
+    @abstractmethod
+    def get_files(self, url):
+        raise NotImplementedError()
+
+    def grab_files(self, url):
+        url = self.reformat_url(url)
+
+        # Get bs_obj
+        # Todo: This process stuck with this url
+        # https://cdn.clien.net/web/api/file/F01/9124365/435797c7760423.mp4\
+        bs_obj = self.get_bsobj(url)
+
+        if bs_obj:
+            # get article from document
+            article = self.get_article(bs_obj)
+
+            find_title = bs_obj.findAll('title')
+            title = find_title[0].text if len(find_title) > 0 else ""
+            files_on_url = self.collect_files_from_article(article)
+            if files_on_url:
+                files = list()
+                for i, file_url in enumerate(files_on_url):
+                    fi = FileInfo(file_url, title + '_' + str(i+1))
+                    files.append(fi)
+                return files
+
     @staticmethod
-    def getBsobj(url):
+    def get_bsobj(url):
         try:
             html = urllib.request.urlopen(url)
             bs_obj = BeautifulSoup(html, features="html.parser")
@@ -16,36 +45,23 @@ class Common:
         except:
             raise ValueError
 
-    @staticmethod
-    def download(fi: FileInfo):
-        return urllib.request.urlretrieve(fi.FILE_URL, "{0}".format(fi.PATH))
-
-    @staticmethod
-    def verify_website(url):
-        url = url.lower()
-        for key, domain in Webservices.get_webservices_dict().items():
-            pattern = 'http(s)?://.*' + domain + '.*'
-            if re.compile(pattern).match(url):
-                return domain
-        raise ValueError
-
-    # Todo: Check valid website it is
-    # for examples,
-    # https://theqoo.net/index.php?mid=talk&filter_mode=normal&page=1 (No srl)
-    # https://m.clien.net/service/board/park?&od=T31&po=0 (No srl too)
-
-
-class IFileGrabberModule:
-    @classmethod
-    def get_article(cls, bs_obj):
+    @abstractmethod
+    def get_article(self, bs_obj):
         raise NotImplementedError()
 
-    @classmethod
-    def collect_files_from_article(cls, article):
+    @abstractmethod
+    def collect_files_from_article(self, article):
+        raise NotImplementedError()
+
+    @abstractmethod
+    def reformat_url(self, url):
         raise NotImplementedError()
 
 
 class Clien(IFileGrabberModule):
+    def get_files(self, url):
+        return self.grab_files(url)
+
     def get_article(self, bs_obj):
         if isinstance(bs_obj, BeautifulSoup):
             return bs_obj.findAll("div", attrs={"class", "post_article"})[0]
@@ -58,8 +74,14 @@ class Clien(IFileGrabberModule):
             if len(files) > 0:
                 return files
 
+    def reformat_url(self, url):
+        return url
+
 
 class Theqoo(IFileGrabberModule):
+    def get_files(self, url):
+        return self.grab_files(url)
+
     def get_article(self, bs_obj):
         if isinstance(bs_obj, BeautifulSoup):
             return bs_obj.findAll({'article', 'itemprop'})[0]
@@ -75,8 +97,7 @@ class Theqoo(IFileGrabberModule):
         if len(files) > 0:
             return [file for file in files if file is not None]
 
-    @staticmethod
-    def reformat_url(url):
+    def reformat_url(self, url):
         reformatted_url = None
         # Check if valid url
         if re.compile('http(s)?://theqoo\.net/.*[\d]{8,15}').search(url):
@@ -94,6 +115,9 @@ class Theqoo(IFileGrabberModule):
 
 
 class Instagram(IFileGrabberModule):
+    def get_files(self, url):
+        return self.grab_files(url)
+
     def get_article(self, bs_obj):
         if isinstance(bs_obj, BeautifulSoup):
             return json.loads(str(bs_obj))
@@ -118,8 +142,7 @@ class Instagram(IFileGrabberModule):
 
             return files
 
-    @staticmethod
-    def reformat_url(url):
+    def reformat_url(self, url):
         try:
             pattern = '^http(s)?://www\.instagram\.com/p/[\w|-]+/'
             return re.compile(pattern).match(url + '/')[0] + '?__a=1'
