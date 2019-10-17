@@ -7,10 +7,6 @@ from FileGrabber.info import Webservices
 
 # Todo: belows
 class Test(FileGrabberTestMain):
-    @unittest.expectedFailure
-    def test_grab_files(self):
-        self.fail()
-
     def test_verify_website(self):
         with self.assertRaises(ValueError):
             filegrabber.verify_website('https://www.naver.com')
@@ -52,10 +48,14 @@ class Test(FileGrabberTestMain):
             self.assertTrue(False)
         except AttributeError:
             self.assertTrue(True)
-
         # 2 check result
         dl_rslt = filegrabber.download_file(fi)
         self.assertEqual(fi.PATH, dl_rslt[0])
+
+    @unittest.expectedFailure
+    def test_grab_files(self):
+        self.fail()
+
 
 if __name__ == '__main__':
     unittest.main()
