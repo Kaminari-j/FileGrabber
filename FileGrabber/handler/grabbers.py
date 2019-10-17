@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup, element
 from abc import *
 
 
-class grabbers(metaclass=ABCMeta):
+class Grabbers(metaclass=ABCMeta):
     @abstractmethod
     def get_files(self, url):
         raise NotImplementedError()
@@ -56,7 +56,7 @@ class grabbers(metaclass=ABCMeta):
         raise NotImplementedError()
 
 
-class Clien(grabbers):
+class Clien(Grabbers):
     def get_files(self, url):
         return self.grab_files(url)
 
@@ -76,7 +76,7 @@ class Clien(grabbers):
         return url
 
 
-class Theqoo(grabbers):
+class Theqoo(Grabbers):
     def get_files(self, url):
         return self.grab_files(url)
 
@@ -112,7 +112,7 @@ class Theqoo(grabbers):
                 '-size_restricted.gif'
 
 
-class Instagram(grabbers):
+class Instagram(Grabbers):
     def get_files(self, url):
         return self.grab_files(url)
 

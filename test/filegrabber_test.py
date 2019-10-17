@@ -25,29 +25,6 @@ class Test(FileGrabberTestMain):
             elif site == Webservices.THEQOO:
                 self.assertEqual(result, Webservices.THEQOO)
 
-    class test_Common(FileGrabberTestMain):
-        @classmethod
-        def setUpClass(cls):
-            pass
-
-        @unittest.skip("当メソッドはgrab_filesに合併されたが、とりあえずスキップして残す")
-        def test_getBsobj(self):
-            from bs4 import BeautifulSoup
-            url = r'https://www.clien.net/service/board/park/13514749'
-            result = grabbers.Common.get_bsobj(url)
-            # 1 Return should be not none
-            self.assertIsNotNone(result)
-            # 2 return should be type of bs
-            self.assertIsInstance(result, BeautifulSoup)
-
-            # 3 if url is invalid method should throw value error
-            url = r'about:blank'
-            try:
-                grabbers.Common.get_bsobj(url)
-                self.assertTrue(False)
-            except ValueError:
-                self.assertTrue(True)
-
     def test_create_module(self):
         with self.assertRaises(ValueError):
             filegrabber.create_module(None)

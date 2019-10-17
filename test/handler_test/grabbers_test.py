@@ -11,7 +11,26 @@ class CasesClien(object):
     GIF_FILES = 'gif_files'
 
 
-class test_Clien(FileGrabberTestMain):
+class GrabbersTest(FileGrabberTestMain):
+    def test_getBsobj(self):
+        from bs4 import BeautifulSoup
+        url = r'https://www.clien.net/service/board/park/13514749'
+        result = grabbers.Grabbers.get_bsobj(url)
+        # 1 Return should be not none
+        self.assertIsNotNone(result)
+        # 2 return should be type of bs
+        self.assertIsInstance(result, BeautifulSoup)
+
+        # 3 if url is invalid method should throw value error
+        url = r'about:blank'
+        try:
+            grabbers.Grabbers.get_bsobj(url)
+            self.assertTrue(False)
+        except ValueError:
+            self.assertTrue(True)
+
+
+class ClienTest(FileGrabberTestMain):
     @classmethod
     def setUpClass(cls):
         cls.module = grabbers.Clien()
@@ -61,7 +80,7 @@ class CasesTheqoo(object):
     GIF_FILES = 'gif_files'
 
 
-class test_Theqoo(FileGrabberTestMain):
+class TheqooTest(FileGrabberTestMain):
     @classmethod
     def setUpClass(cls):
         cls.module = grabbers.Theqoo()
@@ -141,7 +160,7 @@ class CasesInstagram(object):
 
 
 # Todo : way of bs_obj's refreshment.
-class test_Instagram(FileGrabberTestMain):
+class InstagramTest(FileGrabberTestMain):
     @classmethod
     def setUpClass(cls):
         cls.module = grabbers.Instagram()
