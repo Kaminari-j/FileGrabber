@@ -1,5 +1,6 @@
 import imageio
-import os, sys
+import os
+import sys
 
 
 class TargetFormat(object):

@@ -1,109 +1,7 @@
 import unittest
 import re
-import sys
-import os
-from bs4 import BeautifulSoup
-from urllib.request import urlopen
-from FileGrabber import FileGrabber
-#from FileGrabber.main import FileGrabber
-from FileGrabber.InfoClass import Webservices, FileInfo
-
-
-class FileGrabberTestMain(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        pass
-
-    @staticmethod
-    def print_caller(self):
-        print('Test : ' + sys._getframe(1).f_code.co_name, end='')
-
-    @staticmethod
-    # Todo: change method name to prepare_bsobjects
-    def prepare_testenv(url_list, testenv_dir=None):
-        if testenv_dir is None:
-            testenv_dir = r'.test/testenv/'
-        if not os.path.exists(testenv_dir):
-            os.makedirs(testenv_dir)
-
-        bs_list = dict()
-        for key, value in url_list.items():
-            path = testenv_dir + key
-
-            if not os.path.exists(path):
-                html = urlopen(value)
-                # Save HTML to a file
-                with open(path, "wb") as f:
-                    while True:
-                        chunk = html.read(1024)
-                        if not chunk:
-                            break
-                        f.write(chunk)
-
-            # Read HTML from a file
-            with open(path, "rb") as f:
-                bs_list[key] = BeautifulSoup(f.read(), features="html.parser")
-
-        return bs_list
-
-    @classmethod
-    def tearDownClass(cls):
-        if sys.flags.debug: print('> tearDownClass method is called.')
-        # setUpClassで準備したオブジェクトを解放する
-        cls.CLS_VAL = '> tearDownClass : released!'
-        if sys.flags.debug: print(cls.CLS_VAL)
-
-
-class test_Common(FileGrabberTestMain):
-    @classmethod
-    def setUpClass(cls):
-        pass
-
-    # @unittest.skip("bs obj取得に時間がかかるため、普段はスキップする")
-    def test_getBsobj(self):
-        url = r'https://www.clien.net/service/board/park/13514749'
-        result = FileGrabber.Common.get_bsobj(url)
-        # 1 Return should be not none
-        self.assertIsNotNone(result)
-        # 2 return should be type of bs
-        self.assertIsInstance(result, BeautifulSoup)
-
-        # 3 if url is invalid method should throw value error
-        url = r'about:blank'
-        try:
-            FileGrabber.Common.get_bsobj(url)
-            self.assertTrue(False)
-        except ValueError:
-            self.assertTrue(True)
-
-    # Todl: change method name to file_download_with_FileInfo like
-    def test_file_download(self):
-        url = r'https://media2.giphy.com/media/Lo3ye2DFiXN9C/giphy.gif'
-        fi = FileInfo(url, None)
-        # 1 when invalid file
-        try:
-            FileGrabber.Common.download(None)
-            self.assertTrue(False)
-        except AttributeError:
-            self.assertTrue(True)
-
-        # 2 check result
-        dl_rslt = FileGrabber.Common.download(fi)
-        self.assertEqual(fi.PATH, dl_rslt[0])
-
-    def test_verify_website(self):
-        with self.assertRaises(ValueError):
-            FileGrabber.Common.verify_website('https://www.naver.com')
-
-        urls = {'clien': r'https://www.clien.net/service/board/park',
-                'theqoo': r'https://theqoo.net/index.php?mid=square&filter_mode=normal&page=2&document_srl=1110055038'}
-        for site, url in urls.items():
-            result = FileGrabber.Common.verify_website(url)
-            self.assertIsNotNone(result)
-            if site == Webservices.CLIEN:
-                self.assertEqual(result, Webservices.CLIEN)
-            elif site == Webservices.THEQOO:
-                self.assertEqual(result, Webservices.THEQOO)
+from FileGrabber.handler import grabbers
+from test.ForTest import FileGrabberTestMain
 
 
 class CasesClien(object):
@@ -116,7 +14,7 @@ class CasesClien(object):
 class test_Clien(FileGrabberTestMain):
     @classmethod
     def setUpClass(cls):
-        cls.module = FileGrabber.Clien()
+        cls.module = grabbers.Clien()
         cls.url_list = {
             CasesClien.NG: 'https://www.clien.net/service/board/park/13511316',
             CasesClien.MP4_FILE: 'https://www.clien.net/service/board/park/13514749',
@@ -166,7 +64,7 @@ class CasesTheqoo(object):
 class test_Theqoo(FileGrabberTestMain):
     @classmethod
     def setUpClass(cls):
-        cls.module = FileGrabber.Theqoo()
+        cls.module = grabbers.Theqoo()
         cls.url_list = {
             'ng': 'https://theqoo.net/1111082289',
             'gfy_file': 'https://theqoo.net/1111082407',
@@ -230,7 +128,7 @@ class test_Theqoo(FileGrabberTestMain):
                  {'asis': r'https://giant.gfycat.com/PinkTightCrustacean.webm',
                   'tobe': r'https://thumbs.gfycat.com/PinkTightCrustacean-size_restricted.gif'})
         for case in cases:
-            result = FileGrabber.Theqoo.convert_gfycat(case['asis'])
+            result = grabbers.Theqoo.convert_gfycat(case['asis'])
             self.assertEqual(case['tobe'], result)
 
 
@@ -246,7 +144,7 @@ class CasesInstagram(object):
 class test_Instagram(FileGrabberTestMain):
     @classmethod
     def setUpClass(cls):
-        cls.module = FileGrabber.Instagram()
+        cls.module = grabbers.Instagram()
         cls.url_list = {
             'ng': 'https://www.instagram.com/kyokofukada_official/',
             'a_photo': 'https://www.instagram.com/p/BWJUqO6jXpy/?utm_source=ig_web_button_share_sheet',
@@ -285,7 +183,7 @@ class test_Instagram(FileGrabberTestMain):
         # NG
         url = r'https://www.instagram.com/kyokofukada_official/'
         try:
-            FileGrabber.Instagram.reformat_url(url)
+            grabbers.Instagram.reformat_url(url)
         except TypeError:
             pass
 

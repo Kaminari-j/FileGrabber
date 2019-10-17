@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/FileGrabber.iml" filepath="$PROJECT_DIR$/.idea/FileGrabber.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/GrabPhotoFromCommunities.iml" filepath="$PROJECT_DIR$/.idea/GrabPhotoFromCommunities.iml" />
     </modules>
   </component>
 </project>

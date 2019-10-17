@@ -3,23 +3,21 @@ import re
 import json
 import urllib.request
 from bs4 import BeautifulSoup, element
-from InfoClass import FileInfo, Webservices
 from abc import *
 
 
-class IFileGrabberModule(metaclass=ABCMeta):
-    url = None
-
+class grabbers(metaclass=ABCMeta):
     @abstractmethod
     def get_files(self, url):
         raise NotImplementedError()
 
     def grab_files(self, url):
+        from FileGrabber.info import File
         url = self.reformat_url(url)
 
         # Get bs_obj
         # Todo: This process stuck with this url
-        # https://cdn.clien.net/web/api/file/F01/9124365/435797c7760423.mp4\
+        # https://cdn.clien.net/web/api/file/F01/9124365/435797c7760423.mp4
         bs_obj = self.get_bsobj(url)
 
         if bs_obj:
@@ -32,7 +30,7 @@ class IFileGrabberModule(metaclass=ABCMeta):
             if files_on_url:
                 files = list()
                 for i, file_url in enumerate(files_on_url):
-                    fi = FileInfo(file_url, title + '_' + str(i+1))
+                    fi = File(file_url, title + '_' + str(i + 1))
                     files.append(fi)
                 return files
 
@@ -58,7 +56,7 @@ class IFileGrabberModule(metaclass=ABCMeta):
         raise NotImplementedError()
 
 
-class Clien(IFileGrabberModule):
+class Clien(grabbers):
     def get_files(self, url):
         return self.grab_files(url)
 
@@ -78,7 +76,7 @@ class Clien(IFileGrabberModule):
         return url
 
 
-class Theqoo(IFileGrabberModule):
+class Theqoo(grabbers):
     def get_files(self, url):
         return self.grab_files(url)
 
@@ -114,7 +112,7 @@ class Theqoo(IFileGrabberModule):
                 '-size_restricted.gif'
 
 
-class Instagram(IFileGrabberModule):
+class Instagram(grabbers):
     def get_files(self, url):
         return self.grab_files(url)
 

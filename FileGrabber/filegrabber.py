@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import urllib.request
 import re
-import FileGrabber
-from FileGrabber import Webservices, FileInfo
-import converter
+from FileGrabber.handler import grabbers
+from FileGrabber.info import Webservices, File
+from FileGrabber.handler import converter
 import os
 
 
@@ -23,19 +23,19 @@ def verify_website(url):
 def create_module(url: str):
     if url is None:
         raise ValueError
+
+    website = verify_website(url)
+    if website == Webservices.THEQOO:
+        return grabbers.Theqoo()
+    elif website == Webservices.CLIEN:
+        return grabbers.Clien()
+    elif website == Webservices.INSTAGRAM:
+        return grabbers.Instagram()
     else:
-        website = verify_website(url)
-        if website == Webservices.THEQOO:
-            return FileGrabber.Theqoo()
-        elif website == Webservices.CLIEN:
-            return FileGrabber.Clien()
-        elif website == Webservices.INSTAGRAM:
-            return FileGrabber.Instagram()
-        else:
-            raise ValueError
+        raise ValueError
 
 
-def download_file(fi: FileInfo):
+def download_file(fi: File):
     return urllib.request.urlretrieve(fi.FILE_URL, "{0}".format(fi.PATH))
 
 
