@@ -53,7 +53,10 @@ class Test(FileGrabberTestMain):
         self.assertEqual(fi.PATH, dl_rslt[0])
 
     @unittest.expectedFailure
-    def test_grab_files(self):
+    def test_do_grab(self):
+        # When module occurs exception
+        # Todo: get_files, download_file, convertFile method should raise some exception for failing case
+        # Todo: and it should have its own testcase
         self.fail()
 
 
