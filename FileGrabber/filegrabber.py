@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-import urllib.request
+import requests
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+import shutil
 import re
 from FileGrabber.handler import grabbers
 from FileGrabber.info import Webservices, File
@@ -8,9 +11,9 @@ import os
 
 
 # Todo: Check valid website it is
-# for examples,
-# https://theqoo.net/index.php?mid=talk&filter_mode=normal&page=1 (No srl)
-# https://m.clien.net/service/board/park?&od=T31&po=0 (No srl too)
+# for example,
+# https://theqoo.net/index.php?mid=talk&filter_mode=normal&page=1
+# https://m.clien.net/service/board/park?&od=T31&po=0
 def verify_website(url):
     url = url.lower()
     for key, domain in Webservices.get_webservices_dict().items():
@@ -36,10 +39,26 @@ def create_module(url: str):
 
 
 def download_file(fi: File):
-    return urllib.request.urlretrieve(fi.FILE_URL, "{0}".format(fi.PATH))
+    # Todo: 403 Error (url: https://www.imageupload.net/upload-image/2019/11/17/GIF21.gif)
+    r = requests.get(fi.FILE_URL, stream=True, headers={'User-agent': 'Mozilla/5.0'})
+    if r.status_code == 200:
+        with open(fi.PATH, 'wb') as f:
+            r.raw.decode_content = True
+            shutil.copyfileobj(r.raw, f)
+    else:
+        raise ValueError('Download Failed.')
 
 
 def do_grab(url: str, convert=False):
+    """
+    URL의 gif 파일을 읽어들여 다운로드
+
+    :param url: str
+        파일을 다운로드할 페이지의 URL
+    :param convert: bool
+        mp4 -> gif 컨버트를 할지의 여부
+    :return: None
+    """
     module = create_module(url)
     for file in module.get_files(url):
         file.print_file()
