@@ -13,7 +13,8 @@ class TargetFormat(object):
 def convertFile(inputpath, targetFormat, outputpath=None):
     """Reference: http://imageio.readthedocs.io/en/latest/examples.html#convert-a-movie"""
     outputpath = os.path.splitext(inputpath)[0] + targetFormat if outputpath is None else outputpath
-    print("converting\r\n\t{0}\r\nto\r\n\t{1}".format(inputpath, outputpath))
+    # print("converting\r\n\t{0}\r\nto\r\n\t{1}".format(inputpath, outputpath))
+    print("converting {0} to {1}".format(inputpath, outputpath))
 
     reader = imageio.get_reader(inputpath)
     fps = reader.get_meta_data()['fps']
