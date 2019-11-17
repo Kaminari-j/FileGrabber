@@ -116,3 +116,6 @@ dmypy.json
 /.pyre/
 /.idea/
 
+.idea/workspace.xml
+.idea/misc.xml
+.idea/FileGrabber.iml
