@@ -1,4 +1,4 @@
-class FileInfo:
+class File:
     FILE_NAME = None
     FILE_NAME_EN = None
     FILE_NAME_KO = None
@@ -25,21 +25,4 @@ class FileInfo:
         print('FILE_NAME_KO: ' + self.FILE_NAME_KO)
         print('EXT: ' + self.EXT)
         print('PATH: ' + self.PATH)
-
-
-# Todo: Change name to Webservices
-class Webservices(object):
-    CLIEN = "clien"
-    THEQOO = "theqoo"
-    INSTAGRAM = "instagram"
-
-    @staticmethod
-    def get_webservices_dict():
-        import sys
-        this_methods_name = sys._getframe().f_code.co_name
-        return {website: domain
-                for website, domain
-                in Webservices.__dict__.items()
-                if website[:2] != '__'
-                and website != this_methods_name}
 

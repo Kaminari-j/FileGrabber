@@ -1,3 +1,3 @@
-from .FileGrabber_test import *
-from .FileGrabberModule_test import *
-from .InfoClass_test import *
+from .FileGrabber_TestSuite import suite
+from .filegrabber_test import Test
+from .ForTest import FileGrabberTestMain
