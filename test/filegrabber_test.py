@@ -1,3 +1,4 @@
+import os
 import unittest
 from test.ForTest import FileGrabberTestMain
 from FileGrabber import filegrabber
@@ -24,7 +25,7 @@ class Test(FileGrabberTestMain):
     def test_create_module(self):
         with self.assertRaises(ValueError):
             filegrabber.create_module(None)
-                
+
         urls = ('https://www.clien.net/service/board/park/13511316',
                 'https://theqoo.net/1111082407',
                 'https://www.instagram.com/p/Br84A_jFDVC')
@@ -40,17 +41,18 @@ class Test(FileGrabberTestMain):
     # Todl: change method name to file_download_with_FileInfo like
     def test_download_file(self):
         from FileGrabber.info import File
-        url = r'https://media2.giphy.com/media/Lo3ye2DFiXN9C/giphy.gif'
-        fi = File(url, None)
         # 1 when invalid file
-        try:
+        with self.assertRaises(AttributeError):
             filegrabber.download_file(None)
-            self.assertTrue(False)
-        except AttributeError:
-            self.assertTrue(True)
-        # 2 check result
-        dl_rslt = filegrabber.download_file(fi)
-        self.assertEqual(fi.PATH, dl_rslt[0])
+        # 2 which website blocking urlretreive
+        urls = [
+            r'https://www.imageupload.net/upload-image/2019/11/17/GIF21.gif',
+            r'https://media2.giphy.com/media/Lo3ye2DFiXN9C/giphy.gif'
+        ]
+        for url in urls:
+            fi = File(url, None)
+            filegrabber.download_file(fi)
+            self.assertTrue(os.path.exists(fi.PATH))
 
     @unittest.expectedFailure
     def test_do_grab(self):
