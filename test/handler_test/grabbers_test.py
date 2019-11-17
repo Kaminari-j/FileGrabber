@@ -1,109 +1,7 @@
 import unittest
 import re
-import sys
-import os
-from bs4 import BeautifulSoup
-from urllib.request import urlopen
-from FileGrabber import Module
-from FileGrabber.grabber import FileGrabber
-from FileGrabber.InfoClass import Webservices, FileInfo
-
-
-class FileGrabberTestMain(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        raise NotImplementedError
-
-    @staticmethod
-    def print_caller(self):
-        print('Test : ' + sys._getframe(1).f_code.co_name, end='')
-
-    @staticmethod
-    # Todo: change method name to prepare_bsobjects
-    def prepare_testenv(url_list, testenv_dir=None):
-        if testenv_dir is None:
-            testenv_dir = r'.test/testenv/'
-        if not os.path.exists(testenv_dir):
-            os.makedirs(testenv_dir)
-
-        bs_list = dict()
-        for key, value in url_list.items():
-            path = testenv_dir + key
-
-            if not os.path.exists(path):
-                html = urlopen(value)
-                # Save HTML to a file
-                with open(path, "wb") as f:
-                    while True:
-                        chunk = html.read(1024)
-                        if not chunk:
-                            break
-                        f.write(chunk)
-
-            # Read HTML from a file
-            with open(path, "rb") as f:
-                bs_list[key] = BeautifulSoup(f.read(), features="html.parser")
-
-        return bs_list
-
-    @classmethod
-    def tearDownClass(cls):
-        if sys.flags.debug: print('> tearDownClass method is called.')
-        # setUpClassで準備したオブジェクトを解放する
-        cls.CLS_VAL = '> tearDownClass : released!'
-        if sys.flags.debug: print(cls.CLS_VAL)
-
-
-class test_Common(FileGrabberTestMain):
-    @classmethod
-    def setUpClass(cls):
-        pass
-
-    # @unittest.skip("bs obj取得に時間がかかるため、普段はスキップする")
-    def test_getBsobj(self):
-        url = r'https://www.clien.net/service/board/park/13514749'
-        result = Module.Common.getBsobj(url)
-        # 1 Return should be not none
-        self.assertIsNotNone(result)
-        # 2 return should be type of bs
-        self.assertIsInstance(result, BeautifulSoup)
-
-        # 3 if url is invalid method should throw value error
-        url = r'about:blank'
-        try:
-            Module.Common.getBsobj(url)
-            self.assertTrue(False)
-        except ValueError:
-            self.assertTrue(True)
-
-    # Todl: change method name to file_download_with_FileInfo like
-    def test_file_download(self):
-        url = r'https://media2.giphy.com/media/Lo3ye2DFiXN9C/giphy.gif'
-        fi = FileInfo(url, None)
-        # 1 when invalid file
-        try:
-            Module.Common.download(None)
-            self.assertTrue(False)
-        except AttributeError:
-            self.assertTrue(True)
-
-        # 2 check result
-        dl_rslt = Module.Common.download(fi)
-        self.assertEqual(fi.PATH, dl_rslt[0])
-
-    def test_verify_website(self):
-        with self.assertRaises(ValueError):
-            Module.Common.verify_website('https://www.naver.com')
-
-        urls = {'clien': r'https://www.clien.net/service/board/park',
-                'theqoo': r'https://theqoo.net/index.php?mid=square&filter_mode=normal&page=2&document_srl=1110055038'}
-        for site, url in urls.items():
-            result = Module.Common.verify_website(url)
-            self.assertIsNotNone(result)
-            if site == Webservices.CLIEN:
-                self.assertEqual(result, Webservices.CLIEN)
-            elif site == Webservices.THEQOO:
-                self.assertEqual(result, Webservices.THEQOO)
+from FileGrabber.handler import grabbers
+from test.ForTest import FileGrabberTestMain
 
 
 class CasesClien(object):
@@ -113,11 +11,29 @@ class CasesClien(object):
     GIF_FILES = 'gif_files'
 
 
-class test_Clien(FileGrabberTestMain):
+class GrabbersTest(FileGrabberTestMain):
+    def test_getBsobj(self):
+        from bs4 import BeautifulSoup
+        url = r'https://www.clien.net/service/board/park/13514749'
+        result = grabbers.Grabbers.get_bsobj(url)
+        # 1 Return should be not none
+        self.assertIsNotNone(result)
+        # 2 return should be type of bs
+        self.assertIsInstance(result, BeautifulSoup)
+
+        # 3 if url is invalid method should throw value error
+        url = r'about:blank'
+        try:
+            grabbers.Grabbers.get_bsobj(url)
+            self.assertTrue(False)
+        except ValueError:
+            self.assertTrue(True)
+
+
+class ClienTest(FileGrabberTestMain):
     @classmethod
     def setUpClass(cls):
-        cls.filegrabber = FileGrabber()
-        cls.module = Module.Clien()
+        cls.module = grabbers.Clien()
         cls.url_list = {
             CasesClien.NG: 'https://www.clien.net/service/board/park/13511316',
             CasesClien.MP4_FILE: 'https://www.clien.net/service/board/park/13514749',
@@ -164,11 +80,10 @@ class CasesTheqoo(object):
     GIF_FILES = 'gif_files'
 
 
-class test_Theqoo(FileGrabberTestMain):
+class TheqooTest(FileGrabberTestMain):
     @classmethod
     def setUpClass(cls):
-        cls.filegrabber = FileGrabber()
-        cls.module = Module.Theqoo()
+        cls.module = grabbers.Theqoo()
         cls.url_list = {
             'ng': 'https://theqoo.net/1111082289',
             'gfy_file': 'https://theqoo.net/1111082407',
@@ -216,13 +131,13 @@ class test_Theqoo(FileGrabberTestMain):
                 r'https://theqoo.net/1110055038',
                 r'https://theqoo.net/1110055038?abcde')
         for url in urls:
-            reform = Module.Theqoo.reformat_url(url)
+            reform = self.module.reformat_url(url)
             result = re.compile('^http(s)?://theqoo\.net/[\d]{8,15}/$').match(reform)
             self.assertIsNotNone(result)
         # NG
         url = r'https://theqoo.net/index.php'
         try:
-            Module.Theqoo.reformat_url(url)
+            self.module.reformat_url(url)
         except ValueError:
             pass
 
@@ -232,7 +147,7 @@ class test_Theqoo(FileGrabberTestMain):
                  {'asis': r'https://giant.gfycat.com/PinkTightCrustacean.webm',
                   'tobe': r'https://thumbs.gfycat.com/PinkTightCrustacean-size_restricted.gif'})
         for case in cases:
-            result = Module.Theqoo.convert_gfycat(case['asis'])
+            result = grabbers.Theqoo.convert_gfycat(case['asis'])
             self.assertEqual(case['tobe'], result)
 
 
@@ -245,11 +160,10 @@ class CasesInstagram(object):
 
 
 # Todo : way of bs_obj's refreshment.
-class test_Instagram(FileGrabberTestMain):
+class InstagramTest(FileGrabberTestMain):
     @classmethod
     def setUpClass(cls):
-        cls.filegrabber = FileGrabber()
-        cls.module = Module.Instagram()
+        cls.module = grabbers.Instagram()
         cls.url_list = {
             'ng': 'https://www.instagram.com/kyokofukada_official/',
             'a_photo': 'https://www.instagram.com/p/BWJUqO6jXpy/?utm_source=ig_web_button_share_sheet',
@@ -260,7 +174,7 @@ class test_Instagram(FileGrabberTestMain):
         cls.url_list_json = dict()
         for case, url in cls.url_list.items():
             if case != 'ng':
-                cls.url_list_json[case] = Module.Instagram.reformat_url(url)
+                cls.url_list_json[case] = cls.module.reformat_url(url)
         cls.bs_list = cls.prepare_testenv(cls.url_list_json, r'./testenv/instagram/')
         # create articles
         cls.articles = dict()
@@ -282,13 +196,13 @@ class test_Instagram(FileGrabberTestMain):
                 r'https://www.instagram.com/p/BWREXKfj-35')
         pattern = '^http(s)?://www\.instagram\.com/p/[\w|-]+/\?__a=1$'
         for url in urls:
-            reform = Module.Instagram.reformat_url(url)
+            reform = self.module.reformat_url(url)
             result = re.compile(pattern).match(reform)
             self.assertIsNotNone(result)
         # NG
         url = r'https://www.instagram.com/kyokofukada_official/'
         try:
-            Module.Instagram.reformat_url(url)
+            grabbers.Instagram.reformat_url(url)
         except TypeError:
             pass
 

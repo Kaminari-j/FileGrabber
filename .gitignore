@@ -115,7 +115,8 @@ dmypy.json
 # Pyre type checker
 /.pyre/
 /.idea/
-
-.idea/workspace.xml
-.idea/misc.xml
+.DS_Store
 .idea/FileGrabber.iml
+.idea/misc.xml
+.idea/workspace.xml
+FileGrabber/.DS_Store
