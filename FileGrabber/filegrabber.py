@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 import requests
-import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
 import shutil
 import re
 from FileGrabber.handler import grabbers
