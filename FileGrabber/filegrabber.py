@@ -37,14 +37,13 @@ def create_module(url: str):
 
 
 def download_file(fi: File):
-    # Todo: 403 Error (url: https://www.imageupload.net/upload-image/2019/11/17/GIF21.gif)
     r = requests.get(fi.FILE_URL, stream=True, headers={'User-agent': 'Mozilla/5.0'})
-    if r.status_code == 200:
+    if r.status_code != 200:
+        raise ValueError('Download Failed.')
+    else:
         with open(fi.PATH, 'wb') as f:
             r.raw.decode_content = True
             shutil.copyfileobj(r.raw, f)
-    else:
-        raise ValueError('Download Failed.')
 
 
 def do_grab(url: str, convert=False):
