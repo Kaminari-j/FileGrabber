@@ -24,7 +24,7 @@ def convertFile(inputpath, targetFormat, outputpath=None):
         sys.stdout.write("\rframe {0}".format(i))
         sys.stdout.flush()
         writer.append_data(im)
-    print("\r\nFinalizing...")
+    print("\r\nFinalizing...\r\n")
     writer.close()
     print("Done.")
 
